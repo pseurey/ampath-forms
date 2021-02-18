@@ -673,6 +673,10 @@
 										"label": "Suspect"
 									},
 									{
+										"concept": "a8af9046-1350-11df-a1f1-0026b9348838",
+										"label": "Confirmed"
+									},
+									{
 										"concept": "a899ea48-1350-11df-a1f1-0026b9348838",
 										"label": "Not assessed"
 									}
