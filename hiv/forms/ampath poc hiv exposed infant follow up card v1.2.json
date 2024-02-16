@@ -86,7 +86,7 @@
 							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('a8ace206-1350-11df-a1f1-0026b9348838')) ? undefined : HD.getObject('prevEnc').getValue('a8ace206-1350-11df-a1f1-0026b9348838')",
 							"id": "birthWeight",
 							"questionOptions": {
-								"rendering": "number",
+								"rendering": "decimal",
 								"concept": "a8ace206-1350-11df-a1f1-0026b9348838",
 								"max": "5.0",
 								"min": "0.5"
@@ -97,6 +97,10 @@
 									"type": "js_expression",
 									"failsWhenExpression": "isEmpty(myValue) && !isEmpty(visitType) && visitType === 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'",
 									"message": "Required!"
+								},
+								{
+									"type": "decimal",
+									"decimalPlace": 1
 								}
 							],
 							"hide": {
@@ -185,7 +189,8 @@
 										"hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
 									}
 								}
-							]
+							],
+							"id": "__rrwsH8JqD"
 						},
 						{
 							"label": "ARV prophylaxis:",
@@ -234,7 +239,8 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "arvProphy !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
-							}
+							},
+							"id": "__rFtzx20yt"
 						},
 						{
 							"label": "History of TB contact in household:",
@@ -262,7 +268,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
-							}
+							},
+							"id": "__qu2G7MnML"
 						}
 					]
 				}
@@ -477,7 +484,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": " moAlive !== 'a899b35c-1350-11df-a1f1-0026b9348838' || receivePmtct !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
+							},
+							"id": "__HHyGHGwDt"
 						},
 						{
 							"label": "On ART at enrollment of infant?",
@@ -609,7 +617,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": " moAlive !== 'a899b35c-1350-11df-a1f1-0026b9348838' || artEnrollment !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-							}
+							},
+							"id": "__DrtEJyF6x"
 						},
 						{
 							"label": "Mode of delivery:",
@@ -645,7 +654,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
-							}
+							},
+							"id": "__DDMwFFwGs"
 						},
 						{
 							"label": "Place of delivery:",
@@ -673,7 +683,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "visitType !== 'ab202fa8-ad2b-487d-83f8-991f8fa109a1'"
-							}
+							},
+							"id": "__xpFvFvyop"
 						}
 					]
 				}
@@ -755,7 +766,8 @@
 									},
 									"validators": []
 								}
-							]
+							],
+							"id": "__C8wxoqw0s"
 						}
 					]
 				}
@@ -875,37 +887,52 @@
 							"label": "Weight (kg):",
 							"id": "weight",
 							"questionOptions": {
-								"rendering": "number",
+								"rendering": "decimal",
 								"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-								"max": "150",
-								"min": "0"
+								"max": "150.00",
+								"min": "0.00"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "Height (cm):",
 							"id": "height",
 							"questionOptions": {
-								"rendering": "number",
+								"rendering": "decimal",
 								"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-								"max": "350",
-								"min": "0"
+								"max": "350.00",
+								"min": "0.00"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "MUAC:",
 							"id": "muac",
 							"questionOptions": {
-								"rendering": "number",
+								"rendering": "decimal",
 								"concept": "a89c6188-1350-11df-a1f1-0026b9348838",
-								"max": "230",
-								"min": "60"
+								"max": "230.00",
+								"min": "60.00"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "Infant feeding method:",
@@ -979,7 +1006,8 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"id": "__ypLGsxuyM"
 						},
 						{
 							"label": "Milestones:",
@@ -1002,7 +1030,8 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"id": "__MEprF5trG"
 						}
 					]
 				}
@@ -1060,7 +1089,8 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"id": "__Fvur0vFKv"
 						},
 						{
 							"label": "Other drugs:",
@@ -1075,7 +1105,8 @@
 								"rendering": "drug"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"id": "__tHyprD3MH"
 						}
 					]
 				}
@@ -1299,9 +1330,11 @@
 									"validators": [],
 									"hide": {
 										"hideWhenExpression": "isEmpty(order1) || !arrayContainsAny(order1, ['a8aaf3e2-1350-11df-a1f1-0026b9348838'])"
-									}
+									},
+									"id": "__yuHpzqty1"
 								}
-							]
+							],
+							"id": "__3MrxzsKyn"
 						},
 						{
 							"label": "Viral load justification:",
@@ -1560,7 +1593,8 @@
 										"hideWhenExpression": "HEIOutcomes !== 'a89e3ad0-1350-11df-a1f1-0026b9348838'"
 									}
 								}
-							]
+							],
+							"id": "__EK9zCELEv"
 						},
 						{
 							"type": "personAttribute",
@@ -1592,7 +1626,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "arrayContainsAny(['a8aaf3e2-1350-11df-a1f1-0026b9348838', 'e2cc4ec7-442e-4498-b92f-edd4ab988174','a8a3899a-1350-11df-a1f1-0026b9348838', 'e2cc4ec7-442e-4498-b92f-edd4ab988174'],HEIOutcomes)"
-							}
+							},
+							"id": "__GrrHpMzrC"
 						}
 					]
 				}
@@ -1631,10 +1666,11 @@
 								},
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "!isEmpty(HEIOutcomes) && HEIOutcomes === 'a8a3899a-1350-11df-a1f1-0026b9348838')",
+									"failsWhenExpression": "!isEmpty(HEIOutcomes) && HEIOutcomes === 'a8a3899a-1350-11df-a1f1-0026b9348838' && isEmpty(myValue)",
 									"message": "Patient referred to CCC. Indicate RTC date."
 								}
-							]
+							],
+							"id": "__LsGJuvHJM"
 						}
 					]
 				}

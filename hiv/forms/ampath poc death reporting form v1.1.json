@@ -348,7 +348,7 @@
                                     "type": "obs",
                                     "id": "artRegimen",
                                     "questionOptions": {
-                                        "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+                                        "concept": "50f8ff96-7904-4167-b82a-cd7001c5d0bb",
                                         "rendering": "multiCheckbox",
                                         "answers": [
                                             {
@@ -468,7 +468,9 @@
                                     "id": "mms4",
                                     "questionOptions": {
                                         "concept": "315472dc-2b5e-4add-b3b7-bbcf21a8959b",
-                                        "rendering": "number"
+                                        "rendering": "number",
+                                        "max":"4",
+                                        "min":"0"
                                     }
                                 },
                                 {
@@ -477,7 +479,9 @@
                                     "id": "mms8",
                                     "questionOptions": {
                                         "concept": "857caa4e-b566-4a43-ab78-f911c1a8a727",
-                                        "rendering": "number"
+                                        "rendering": "number",
+                                        "max":"8",
+                                        "min":"0"
                                     }
                                 },
                                 {
@@ -528,7 +532,7 @@
                     ]
                 },
                 {
-                    "label": "History Before Death",
+                    "label": "Death Details",
                     "isExpanded": "true",
                     "questions": [
                         {

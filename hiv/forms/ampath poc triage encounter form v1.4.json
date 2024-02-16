@@ -71,7 +71,8 @@
 								],
 								"rendering": "select"
 							},
-							"type": "obs"
+							"type": "obs",
+							"id": "__MLFJyJqzL"
 						},
 						{
 							"label": "Completed school?",
@@ -89,7 +90,8 @@
 								],
 								"rendering": "select"
 							},
-							"type": "obs"
+							"type": "obs",
+							"id": "__IHvGtoHDo"
 						}
 					]
 				},
@@ -126,7 +128,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "age>14"
-							}
+							},
+							"id": "__xEKDKG5yz"
 						},
 						{
 							"label": "If yes for siblings < 18 months, are they registered in pediatric HIV clinic:",
@@ -158,7 +161,8 @@
 							],
 							"hide": {
 								"hideWhenExpression": "age>14"
-							}
+							},
+							"id": "__osEMyInts"
 						}
 					]
 				}
@@ -169,219 +173,226 @@
 			"sections": [
 				{
 					"label": "Vital Signs",
-					"isExpanded": "true",
 					"questions": [
 						{
-							"label": "BP:Systolic:",
+							"type": "obsGroup",
+							"label": "test group",
 							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
-								"max": "250",
-								"min": "0"
+								"rendering": "group",
+								"concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
 							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "BP:Diastolic:",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
-								"max": "200",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Pulse(Rate/Min):",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
-								"max": "230",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "RR(Breath/Min):",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a6f71a-1350-11df-a1f1-0026b9348838"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Temp(C):",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
-								"max": "43",
-								"min": "25"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Weight(Kg):",
-							"id": "weight",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-								"max": "250",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Height(CM):",
-							"id": "height",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-								"max": "228",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Weight for height Z-score:",
-							"id": "weightScore",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
-								"max": "4",
-								"min": "-4",
-								"calculate": {
-									"calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+							"questions": [
+								{
+									"label": "BP:Systolic:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+										"max": "250",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "syst"
+								},
+								{
+									"label": "BP:Diastolic:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+										"max": "200",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "diast"
+								},
+								{
+									"label": "Pulse(Rate/Min):",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+										"max": "230",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "pulse"
+								},
+								{
+									"label": "RR(Breath/Min):",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
+										"max": "99",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "resp"
+								},
+								{
+									"label": "Temp(C):",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a65fee-1350-11df-a1f1-0026b9348838",
+										"max": "43.00",
+										"min": "25.00"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									],
+									"id": "temp"
+								},
+								{
+									"label": "Weight(Kg):",
+									"id": "weight",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+										"max": "250",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									]
+								},
+								{
+									"label": "Height(CM):",
+									"id": "height",
+									"historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
+									"questionOptions": {
+										"rendering": "decimal",
+										"concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+										"max": "228.00",
+										"min": "10.00"
+									},
+									"type": "obs",
+									"validators": [
+										{
+											"type": "decimal",
+											"decimalPlace": 1
+										}
+									]
+								},
+								{
+									"label": "Weight for height Z-score:",
+									"id": "weightScore",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "5099d8a8-36c1-4574-a568-9bc49c15c08c",
+										"max": "4",
+										"min": "-4",
+										"calculate": {
+											"calculateExpression": "calcWeightForHeightZscore(weightForHeightRef,height,weight)"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age>5"
+									}
+								},
+								{
+									"label": " Height/length for age Z-score:",
+									"id": "heightLengthScore",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
+										"max": "4",
+										"min": "-4",
+										"calculate": {
+											"calculateExpression": "calcHeightForAgeZscore(heightForAgeRef,height,weight)"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age>17"
+									}
+								},
+								{
+									"label": "Sp02:",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a8a66354-1350-11df-a1f1-0026b9348838",
+										"max": "100",
+										"min": "0"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "saturation"
+								},
+								{
+									"label": "BMI:Kg/M2",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+										"max": "100",
+										"min": "0",
+										"calculate": {
+											"calculateExpression": "calcBMI(height,weight)"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age<18"
+									},
+									"id": "bmi"
+								},
+								{
+									"label": "BMI for age Z-Score:",
+									"id": "bmiScore",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
+										"max": "4",
+										"min": "-4",
+										"calculate": {
+											"calculateExpression": "!isEmpty(height) && !isEmpty(weight) ? calcBMIForAgeZscore(bmiForAgeRef,height,weight): ''"
+										}
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "age<=5 ||age >=17"
+									}
+								},
+								{
+									"label": "MUAC:MM",
+									"questionOptions": {
+										"rendering": "number",
+										"concept": "a89c6188-1350-11df-a1f1-0026b9348838",
+										"max": "450",
+										"min": "60"
+									},
+									"type": "obs",
+									"validators": [],
+									"id": "muac"
 								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age>5"
-							}
-						},
-						{
-							"label": " Height/length for age Z-score:",
-							"id": "heightLengthScore",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "507f48e7-26fc-490b-a521-35d7c5aa8e9f",
-								"max": "4",
-								"min": "-4",
-								"calculate": {
-									"calculateExpression": "calcHeightForAgeZscore(heightForAgeRef,height,weight)"
-								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age>17"
-							}
-						},
-						{
-							"label": "Sp02:",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-								"max": "100",
-								"min": "0"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "BMI:Kg/M2",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
-								"max": "100",
-								"min": "0",
-								"calculate": {
-									"calculateExpression": "calcBMI(height,weight)"
-								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age<18"
-							}
-						},
-						{
-							"label": "BMI for age Z-Score:",
-							"id": "bmiScore",
-							"questionOptions": {
-								"rendering": "number",
-								"concept": "9061e5d5-8478-4d16-be44-bfec05b6705a",
-								"max": "4",
-								"min": "-4",
-								"calculate": {
-									"calculateExpression": "!isEmpty(height) && !isEmpty(weight) ? calcBMIForAgeZscore(bmiForAgeRef,height,weight): ''"
-								}
-							},
-							"type": "obs",
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "age<=5 ||age >=17"
-							}
-						},
-						{
-							"label": "MUAC:MM",
-							"id": "muac",
-							"questinOptions": {
-								"rendering": "number",
-								"concept": "a89c6188-1350-11df-a1f1-0026b9348838",
-								"max": "450",
-								"min": "60"
-							},
-							"type": "obs",
-							"validators": []
+							],
+							"id": "muac"
 						}
 					]
 				}
 			]
 		},
 		{
-			"label": "Family Information",
+			"label": "Family History",
 			"sections": [
 				{
-					"label": "Family Information",
-					"isExpanded": "true",
+					"label": "Family History",
 					"questions": [
 						{
-							"label": "Does the patient have information on family members",
-							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('ba77876f-2ff7-49db-9743-783b20589e03')) ? undefined : HD.getObject('prevEnc').getValue('ba77876f-2ff7-49db-9743-783b20589e03')",
-							"required": "true",
-							"id": "familyInfo",
-							"questionOptions": {
-								"rendering": "select",
-								"concept": "ba77876f-2ff7-49db-9743-783b20589e03",
-								"answers": [
-									{
-										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-										"label": "Yes"
-									},
-									{
-										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-										"label": "No"
-									},
-									{
-										"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
-										"label": "N/A"
-									}
-								]
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
 							"label": "Family History",
-							"isExpanded": "true",
 							"type": "obsGroup",
 							"questionOptions": {
 								"concept": "aeddf768-5ac0-45e4-934b-bf69730a8c2d",
@@ -389,52 +400,19 @@
 							},
 							"questions": [
 								{
-									"label": "Name of family member:",
-									"id": "nameFm",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.58fd4938-8976-4c43-b01a-6ce794d4f80b')) ? undefined : HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.58fd4938-8976-4c43-b01a-6ce794d4f80b')",
-									"type": "obs",
-									"questionOptions": {
-										"rendering": "text",
-										"concept": "58fd4938-8976-4c43-b01a-6ce794d4f80b",
-										"answers": []
-									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(familyInfo) && familyInfo === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "familyInfo!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
 									"label": "Age of family member:",
-									"id": "ageFm",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.d67c7f03-7559-46bd-972b-6520769ec2b7')) ? undefined : HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.d67c7f03-7559-46bd-972b-6520769ec2b7')",
 									"type": "obs",
 									"questionOptions": {
 										"rendering": "number",
 										"concept": "d67c7f03-7559-46bd-972b-6520769ec2b7",
 										"answers": []
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(familyInfo) && familyInfo === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "familyInfo!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__zCKsMxDur"
 								},
 								{
 									"label": "Relation:",
-									"id": "relation",
 									"type": "obs",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.2ec6c229-afb6-4d95-89d2-c2f5e2715e9a')) ? undefined : HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.2ec6c229-afb6-4d95-89d2-c2f5e2715e9a')",
 									"questionOptions": {
 										"rendering": "select",
 										"concept": "2ec6c229-afb6-4d95-89d2-c2f5e2715e9a",
@@ -452,20 +430,44 @@
 												"label": "Sibling"
 											},
 											{
+												"concept": "a8a171a0-1350-11df-a1f1-0026b9348838",
+												"label": "Childrens home"
+											},
+											{
 												"concept": "a89defe4-1350-11df-a1f1-0026b9348838",
 												"label": "Child"
+											},
+											{
+												"concept": "a89c9f54-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal grandparent"
+											},
+											{
+												"concept": "a89c9e3c-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal grandparent"
+											},
+											{
+												"concept": "a898c6f4-1350-11df-a1f1-0026b9348838",
+												"label": "Self"
 											},
 											{
 												"concept": "a89ebc80-1350-11df-a1f1-0026b9348838",
 												"label": "Spouse"
 											},
 											{
-												"concept": "a89ebd3e-1350-11df-a1f1-0026b9348838",
-												"label": "Partner"
+												"concept": "a8a17470-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal aunt"
 											},
 											{
-												"concept": "52471304-8097-41d7-982f-5fc2c3ca19b0",
-												"label": "Co-wife"
+												"concept": "a8a17394-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal aunt"
+											},
+											{
+												"concept": "a8a175f6-1350-11df-a1f1-0026b9348838",
+												"label": "Paternal uncle"
+											},
+											{
+												"concept": "a8a1752e-1350-11df-a1f1-0026b9348838",
+												"label": "Maternal uncle"
 											},
 											{
 												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
@@ -473,22 +475,12 @@
 											}
 										]
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(familyInfo) && familyInfo === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "familyInfo!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__GppCIHrJy"
 								},
 								{
 									"label": "HIV status of family member:",
-									"id": "hivStatus",
 									"type": "obs",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.e7de7f52-9d91-4be6-a369-6cde2fe2d9a6')) ? undefined : HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d.e7de7f52-9d91-4be6-a369-6cde2fe2d9a6')",
 									"questionOptions": {
 										"rendering": "select",
 										"concept": "e7de7f52-9d91-4be6-a369-6cde2fe2d9a6",
@@ -507,72 +499,24 @@
 											}
 										]
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(familyInfo) && familyInfo === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "familyInfo!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__rGuxHDpvu"
 								},
 								{
-									"label": "Year tested:",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d')) ? undefined : HD.getObject('prevEnc').getValue('a8afb990-1350-11df-a1f1-0026b9348838')",
+									"label": "Year tested",
 									"type": "obs",
-									"id": "testYear",
 									"questionOptions": {
-										"concept": "a8afb990-1350-11df-a1f1-0026b9348838",
-										"rendering": "number"
+										"rendering": "number",
+										"concept": "2a1066f8-35c7-48b3-ad53-d692ca6bda3d",
+										"answers": [],
+										"min": "0"
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(hivStatus) && hivStatus !== 'a899b50a-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "isEmpty(hivStatus) || hivStatus === 'a899b50a-1350-11df-a1f1-0026b9348838'"
-									}
-								},
-								{
-									"label": "Eligible for testing?",
-									"id": "eligible",
-									"type": "obs",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d')) ? undefined : HD.getObject('prevEnc').getValue('157a9ffe-8175-4b43-a785-cec2858cc9c3')",
-									"questionOptions": {
-										"rendering": "select",
-										"concept": "157a9ffe-8175-4b43-a785-cec2858cc9c3",
-										"answers": [
-											{
-												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
-												"label": "Yes"
-											},
-											{
-												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
-												"label": "No"
-											}
-										]
-									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(hivStatus) && hivStatus === 'a896d2cc-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "hivStatus!== 'a896d2cc-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__IELDu2Lsp"
 								},
 								{
 									"label": "In care?",
-									"id": "inCare",
 									"type": "obs",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d')) ? undefined : HD.getObject('prevEnc').getValue('85c60aac-51e2-411c-98c5-56ffc0169b11')",
 									"questionOptions": {
 										"rendering": "select",
 										"concept": "85c60aac-51e2-411c-98c5-56ffc0169b11",
@@ -591,38 +535,83 @@
 											}
 										]
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(hivStatus) && hivStatus === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "hivStatus!== 'a896f3a6-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__2q8Huu5sE"
 								},
 								{
-									"label": "CCC number",
-									"id": "cccMumber",
+									"label": "Family member deceased?",
 									"type": "obs",
-									"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('aeddf768-5ac0-45e4-934b-bf69730a8c2d')) ? undefined : HD.getObject('prevEnc').getValue('45821d60-95fb-45f5-a267-c7e04cb25480')",
 									"questionOptions": {
-										"rendering": "text",
-										"concept": "45821d60-95fb-45f5-a267-c7e04cb25480"
+										"rendering": "select",
+										"concept": "1158dfed-993a-477e-9ecc-ccdde2aa382c",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
 									},
-									"validators": [
-										{
-											"type": "js_expression",
-											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(familyInfo) && familyInfo === 'a899b35c-1350-11df-a1f1-0026b9348838'",
-											"message": "Required!"
-										}
-									],
-									"hide": {
-										"hideWhenExpression": "inCare!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
-									}
+									"validators": [],
+									"id": "__G6nIIpEsz"
+								},
+								{
+									"label": "If deceased,HIV cause of death?",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "758c85ed-2239-470e-a8a4-d6083ab3d0ee",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__wF1quDGtz"
+								},
+								{
+									"label": "On anti-TB meds",
+									"type": "obs",
+									"questionOptions": {
+										"rendering": "select",
+										"concept": "a8afcc82-1350-11df-a1f1-0026b9348838",
+										"answers": [
+											{
+												"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+												"label": "Yes"
+											},
+											{
+												"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+												"label": "No"
+											},
+											{
+												"concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+												"label": "Unknown"
+											}
+										]
+									},
+									"validators": [],
+									"id": "__tMqwKxz8y"
 								}
-							]
+							],
+							"id": "__un46zJLqq"
 						}
 					]
 				},
@@ -697,7 +686,8 @@
 								],
 								"rendering": "select"
 							},
-							"type": "obs"
+							"type": "obs",
+							"id": "__MzurotMtr"
 						}
 					]
 				},
@@ -739,7 +729,8 @@
 								],
 								"rendering": "select"
 							},
-							"type": "obs"
+							"type": "obs",
+							"id": "__Hrn9wnEyu"
 						}
 					]
 				}
@@ -765,10 +756,7 @@
 								"placeholder": "What is HIV/AIDS, CD4, ARVs, VL. How ARVs work. Importance of adherence, clinic appointments and carrying all your medications. Discuss drug-drug interactions and drug food interactions that may affect action of ARVs.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Assess for behavioral barriers:",
@@ -784,10 +772,7 @@
 								"placeholder": "Review how patients take drugs (dosage,timing). How treatment fits thier daily routine. What reminder tools are in place. What to do incase of travel or visit. What to do incase of missed doses and side effects. The most difficult situations for the patient to take drugs. Check for alcohol use (CAGE/CRAFT tool)",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Assess for emotional barriers:",
@@ -803,10 +788,7 @@
 								"placeholder": "Review patient's motivation: How they feel about taking drugs every day and their ambition in life. Their goal/dreams for the future and what they want to achieve in life. Do mental screening and assess for depression. Assess for stages of grief: denial, bargaining, depression and acceptance.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Assess for socio economic barriers:",
@@ -822,10 +804,7 @@
 								"placeholder": "Elicit for and assess recent relationship statuschange and or whether the patient has disclosed to his/her partner's. Support from tx buddy, explore family support, profession and income generating resources. Barriers to clinic on regular basis, assess for stigma and discrimination, religious beliefs and use of herbal medication.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Do referral and networking as guided by the session:",
@@ -867,10 +846,7 @@
 									}
 								]
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Develop an adherence plan:",
@@ -886,10 +862,20 @@
 								"placeholder": "Go through each of the adherence challenges identified during the session and assist the patient to develop a plan that addresses each of the issues. Patients should come up with their own solutions so that they own them. Agree on follow up for the next sessions 2-4 weeks.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
+						},
+						{
+							"label": "Session one date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')) ? undefined : HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('073a195d-14fd-4a67-9d1f-b4fb48e9c46a')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionOneDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "073a195d-14fd-4a67-9d1f-b4fb48e9c46a",
+								"rendering": "date"
+							},
+							"validators": []
 						}
 					]
 				},
@@ -911,10 +897,7 @@
 								"placeholder": "Ask the patient if he/she thinks adherence has improved in the last month. Enquire in a friendly way if any doses have been missed. Review the patients barriers to adherence documented during the first session and if strategies identified have been taken up, if not discuss why not.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Identify any new issues:",
@@ -930,10 +913,7 @@
 								"placeholder": "Discuss specific reasons why the patient may have pissed their pills or a clinic appointment in the last counselling session and determine if it is a new issue that wasnt addressed during the first session. Discuss other issues that have come up because of implementating the adherence plan (e.g perharps the dosclosure process had unintended result)",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Referral and networking:",
@@ -949,10 +929,7 @@
 								"placeholder": "Follow up on any referrals made during the previous session. Determine if the patient could benefit form a home visit.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Develop an adherence plan:",
@@ -968,10 +945,20 @@
 								"placeholder": "Go through each of the adherence challenges identified during the session and assist the patient to modify their original adherence plan to address each of the issues. It is important to let the patient come up with the solutions so that they own them. ",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
+						},
+						{
+							"label": "Session two date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')) ? undefined : HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('3d3e8faa-6bb3-43b4-959b-9765a40732f6')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionTwoDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "3d3e8faa-6bb3-43b4-959b-9765a40732f6",
+								"rendering": "date"
+							},
+							"validators": []
 						}
 					]
 				},
@@ -993,10 +980,7 @@
 								"placeholder": "Ask the patient if he/she thinks adherence has improved in the last month. Enquire in a friendly way if any doses have been missed. Review the patient's barriers to adherence documented during the first session and if strategies identified have been taken up. If not, discuss why not. ",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Identify new issues:",
@@ -1012,10 +996,7 @@
 								"placeholder": "Discuss specific reasons why the patient may have missed their pills or a clinic appointments in the last counselling session and determine if it is new issue that wasn's addressed during the first session. Discuss other issues that have come up.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Referrals and networking:",
@@ -1031,10 +1012,7 @@
 								"placeholder": "Follow up on any referrals mande during the previous session. Determine if the patient could benefit form a home visit.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Develop an adherence plan:",
@@ -1050,10 +1028,7 @@
 								"placeholder": "Go through each of the adherence challenges identified during the session and asist the patient to modify their original adherence plan to address each of the issues. Agree on follow up date for the next session 3-4 weeks.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
 						},
 						{
 							"label": "Repeat viral load?",
@@ -1069,10 +1044,20 @@
 								"placeholder": "If the adherence is excellent: plan for the next VL testing after 3 months and explain possible ways forward emphasizing the role of the patient, the support system and the health facility.Explain to the client the expected outcome of the repeat VL. If the client is not ready depending on the counselors assessment, plan for one more EAC session before repeating VL.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
+						},
+						{
+							"label": "Session three date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')) ? undefined : HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('bfbe9e12-8a44-4b30-9029-d3d1104e013a')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionThreeDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "bfbe9e12-8a44-4b30-9029-d3d1104e013a",
+								"rendering": "date"
+							},
+							"validators": []
 						}
 					]
 				},
@@ -1093,10 +1078,20 @@
 								"placeholder": "If suppressed <1000, congratulate the client. Explain way forward, will continue the same ART regimen and repeat the VL again in 12 months. If not suppressed >1000: Explain the way forward: will probably need to switch to 2nd line ART as per the clinicians decision and case manager to present the case to the MDT.",
 								"rows": 10
 							},
-							"validators": [],
-							"hide": {
-								"hideWhenExpression": "!arrayContains (['6c5d74f4-943f-489a-b1c4-b2accfae92fb','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'], visitTypeUuid)"
-							}
+							"validators": []
+						},
+						{
+							"label": "Session four date:",
+							"type": "obs",
+							"historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')) ? undefined : HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')",
+							"historicalPrepopulateCondition": "!_.isEmpty(HD.getObject('prevEnc').getValue('b3eb34ab-2b67-4a2d-969a-ec8696180b54')) && _.isEmpty(HD.getObject('prevEnc').getValue('abb4c3f3-2a2f-4736-96e0-5b9cf63cd6b2')) && moment().diff(histValue.valueDate, 'days') < 180",
+							"id": "sessionFourDate",
+							"default": "",
+							"questionOptions": {
+								"concept": "b3eb34ab-2b67-4a2d-969a-ec8696180b54",
+								"rendering": "date"
+							},
+							"validators": []
 						}
 					]
 				}
