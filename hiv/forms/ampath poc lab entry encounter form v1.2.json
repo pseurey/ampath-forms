@@ -60,10 +60,10 @@
 							"id": "creatinine_test",
 							"questionOptions": {
 								"concept": "a897e450-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
+								"rendering": "decimal",
 								"showDate": "true",
-								"max": "11050",
-								"min": "0",
+								"max": "11050.00",
+								"min": "0.00",
 								"shownDateOptions": {
 									"validators": [
 										{
@@ -80,7 +80,12 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"type": "obs",
@@ -88,9 +93,9 @@
 							"id": "sgptalt_test",
 							"questionOptions": {
 								"concept": "a896ca48-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
-								"max": "3500",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "3500.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -108,7 +113,12 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"type": "obs",
@@ -116,9 +126,9 @@
 							"id": "ast_test",
 							"questionOptions": {
 								"concept": "a896c8ae-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
-								"max": "3500",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "3500.00",
+								"min": "0.00",
 								"showDate": "true"
 							},
 							"shownDateOptions": {
@@ -135,7 +145,13 @@
 								"hide": {
 									"hideWhenExpression": "isEmpty(ast_test)"
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "RBS mmol/L:",
@@ -144,9 +160,9 @@
 							"questionOptions": {
 								"concept": "a898418e-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "50",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "50.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -163,7 +179,13 @@
 										"hideWhenExpression": "isEmpty(rbs_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "FBS mmol/L:",
@@ -172,9 +194,9 @@
 							"questionOptions": {
 								"concept": "a8b018fe-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "50",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "50.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -191,7 +213,13 @@
 										"hideWhenExpression": "isEmpty(fbs_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "HbA1C %:",
@@ -200,9 +228,9 @@
 							"questionOptions": {
 								"concept": "a8af7520-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "20",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "20.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -219,7 +247,13 @@
 										"hideWhenExpression": "isEmpty(a1c_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "LDL mmol/L:",
@@ -228,9 +262,9 @@
 							"questionOptions": {
 								"concept": "a898e74c-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "75",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "75.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -247,7 +281,13 @@
 										"hideWhenExpression": "isEmpty(ldl_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "HDL mmol/L:",
@@ -256,9 +296,9 @@
 							"questionOptions": {
 								"concept": "a898e602-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "15",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "15.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -275,7 +315,13 @@
 										"hideWhenExpression": "isEmpty(hdl_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "TG mmol/L:",
@@ -284,9 +330,9 @@
 							"questionOptions": {
 								"concept": "a898e8a0-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "55",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "55.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -303,7 +349,13 @@
 										"hideWhenExpression": "isEmpty(tg_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "Cholesterol mmol/L:",
@@ -312,9 +364,9 @@
 							"questionOptions": {
 								"concept": "a898e4b8-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "100",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "100.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -331,7 +383,13 @@
 										"hideWhenExpression": "isEmpty(chol_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "Microalbumin test, urine mg/L:",
@@ -340,9 +398,9 @@
 							"questionOptions": {
 								"concept": "7129af13-e39a-43b0-9923-6d1de22c9c5e",
 								"answers": [],
-								"rendering": "number",
-								"max": "300",
-								"min": "30",
+								"rendering": "decimal",
+								"max": "300.00",
+								"min": "30.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -359,7 +417,13 @@
 										"hideWhenExpression": "isEmpty(microAlb_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "Urea mmol/L:",
@@ -368,9 +432,9 @@
 							"questionOptions": {
 								"concept": "a8982550-1350-11df-a1f1-0026b9348838",
 								"answers": [],
-								"rendering": "number",
-								"max": "330",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "330.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -383,11 +447,17 @@
 											"message": "Date is result is required."
 										}
 									],
-									"hde": {
+									"hide": {
 										"hideWhenExpression": "isEmpty(urea_test)"
 									}
 								}
-							}
+							},
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						}
 					]
 				},
@@ -399,10 +469,10 @@
 							"id": "hgbgdl_test",
 							"questionOptions": {
 								"concept": "a8908a16-1350-11df-a1f1-0026b9348838",
-								"max": "50",
-								"min": "0",
+								"max": "50.00",
+								"min": "0.00",
 								"showDate": "true",
-								"rendering": "number",
+								"rendering": "decimal",
 								"shownDateOptions": {
 									"validators": [
 										{
@@ -420,15 +490,20 @@
 								}
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "WBC/mm3:",
 							"id": "testWBCmm",
 							"questionOptions": {
 								"concept": "a896dea2-1350-11df-a1f1-0026b9348838",
-								"max": "500",
-								"min": "0",
+								"max": "500.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -445,10 +520,15 @@
 										"hideWhenExpression": "isEmpty(testWBCmm)"
 									}
 								},
-								"rendering": "number"
+								"rendering": "decimal"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"type": "obs",
@@ -456,9 +536,9 @@
 							"id": "platelets_test",
 							"questionOptions": {
 								"concept": "a8970954-1350-11df-a1f1-0026b9348838",
-								"rendering": "number",
-								"max": "450000",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "450000.00",
+								"min": "0.00",
 								"showDate": "true",
 								"shownDateOptions": {
 									"validators": [
@@ -476,17 +556,22 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "ALC/ mm3:",
 							"id": "alcmm_test",
 							"questionOptions": {
 								"concept": "a898b20e-1350-11df-a1f1-0026b9348838",
-								"max": "500",
-								"min": "0",
+								"max": "500.00",
+								"min": "0.00",
 								"showDate": "true",
-								"rendering": "number",
+								"rendering": "decimal",
 								"shownDateOptions": {
 									"validators": [
 										{
@@ -504,17 +589,22 @@
 								}
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						},
 						{
 							"label": "MCV:",
 							"id": "mcv_test",
 							"questionOptions": {
 								"concept": "a898201e-1350-11df-a1f1-0026b9348838",
-								"max": "500",
-								"min": "0",
+								"max": "500.00",
+								"min": "0.00",
 								"showDate": "true",
-								"rendering": "number",
+								"rendering": "decimal",
 								"shownDateOptions": {
 									"validators": [
 										{
@@ -532,7 +622,12 @@
 								}
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						}
 					]
 				},
@@ -567,12 +662,48 @@
 						},
 						{
 							"type": "obs",
+							"id": "cd4Qualitative",
+							"questionOptions": {
+								"concept": "17c84b86-294a-4902-9044-18d9143a278a",
+								"showDate": "true",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a89cd668-1350-11df-a1f1-0026b9348838",
+										"label": "CD4 count less than 200 (<200)"
+									},
+									{
+										"concept": "a89b7426-1350-11df-a1f1-0026b9348838",
+										"label": "CD4 count greater than 200 (>200)"
+									}
+								],
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(cd4Qualitative) && isEmpty(myValue)",
+											"message": "Date is result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(cd4Qualitative)"
+									}
+								}
+							},
+							"label": "CD4 test qualitative (VISITECT):",
+							"validators": []
+						},
+						{
+							"type": "obs",
 							"label": "CD4 %:",
 							"id": "cd4percent_test",
 							"questionOptions": {
-								"rendering": "number",
-								"max": "100",
-								"min": "0",
+								"rendering": "decimal",
+								"max": "100.00",
+								"min": "0.00",
 								"showDate": "true",
 								"concept": "a8970a26-1350-11df-a1f1-0026b9348838",
 								"shownDateOptions": {
@@ -591,7 +722,12 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [
+								{
+									"type": "decimal",
+									"decimalPlace": 1
+								}
+							]
 						}
 					]
 				},
@@ -733,7 +869,8 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [],
+							"id": "__oGMKrxzno"
 						},
 						{
 							"label": "HIV DNA PCR:",
@@ -781,7 +918,8 @@
 									}
 								}
 							},
-							"validators": []
+							"validators": [],
+							"id": "__7nKKvsunE"
 						}
 					]
 				},
@@ -1353,7 +1491,8 @@
 										"hideWhenExpression": "visitTypeUuid !== '02e3ce61-fa24-445e-a1f0-6e3299142966'"
 									}
 								}
-							]
+							],
+							"id": "__n02qFGDD5"
 						}
 					]
 				},
@@ -1504,7 +1643,8 @@
 									},
 									"validators": []
 								}
-							]
+							],
+							"id": "__M3HyIIzpI"
 						}
 					]
 				}

@@ -1511,6 +1511,10 @@
 										"label": "Discharged at 18 months"
 									},
 									{
+										"concept": "ef11e00c-cea7-4666-aa39-3067ee22c715",
+										"label": "Discharged at 24 months"
+									},
+									{
 										"concept": "a8a3899a-1350-11df-a1f1-0026b9348838",
 										"label": "Referred to CCC"
 									},
@@ -1647,11 +1651,13 @@
 								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
 								"rendering": "date",
 								"weeksList": [
-									2,
-									4,
-									8,
-									12,
-									16
+									15,
+									30,
+									45,
+									60,
+									90,
+									120,
+									180
 								]
 							},
 							"validators": [
