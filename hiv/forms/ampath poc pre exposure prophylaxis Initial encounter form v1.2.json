@@ -248,11 +248,11 @@
 								"concept": "a8aaf9dc-1350-11df-a1f1-0026b9348838",
 								"answers": [
 									{
-										"concept": "8b715fed-97f6-4e38-8f6a-c167a42f8923",
+										"concept": "a899b35c-1350-11df-a1f1-0026b9348838",
 										"label": "Yes"
 									},
 									{
-										"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+										"concept": "a899b42e-1350-11df-a1f1-0026b9348838",
 										"label": "No"
 									}
 								]
@@ -302,6 +302,43 @@
 							"id": "maritalStatus"
 						},
 						{
+							"label": "HIV test result:",
+							"type": "obs",
+							"id": "hivRapid",
+							"required": "true",
+							"questionOptions": {
+								"concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
+								"rendering": "select",
+								"answers": [
+									{
+										"concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+										"label": "Positive"
+									},
+									{
+										"concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+										"label": "Negative"
+									}
+								],
+								"showDate": "true",
+								"shownDateOptions": {
+									"validators": [
+										{
+											"type": "date"
+										},
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "!isEmpty(hivRapid) && isEmpty(myValue)",
+											"message": "Date result is required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(hivRapid)"
+									}
+								}
+							},
+							"validators": []
+						},
+						{
 							"label": "Population type:",
 							"required": "true",
 							"id": "popType",
@@ -309,56 +346,48 @@
 								"concept": "bbc2e048-0db6-4c22-a951-dab66b1243f9",
 								"answers": [
 									{
-										"concept": "a8af49d8-1350-11df-a1f1-0026b9348838",
-										"label": "Discordant couples"
+										"concept": "a4d337b6-4029-467f-9b16-629e24d05e15",
+										"label": "Transgender"
 									},
 									{
-										"concept": "8b0fa615-39c7-40ba-ad06-579ae540c6a5",
-										"label": "Priority population"
-									},
-									{
-										"concept": "79ab66e0-4248-491e-be7c-cddaa89bb0d7",
-										"label": "General population"
-									},
-									{
-										"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-										"label": "Key population"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": []
-						},
-						{
-							"label": "Key population specify:",
-							"id": "keyPopType",
-							"questionOptions": {
-								"concept": "93aa3f1d-1c39-4196-b5e6-8adc916cd5d6",
-								"answers": [
-									{
-										"concept": "e19c35f0-12f0-46c2-94ea-97050f37b811",
-										"label": "Men who has sex with men"
+										"concept": "95d14f8c-87dc-4f53-acbe-525086c65a1d",
+										"label": "Adolescent girls and young women(15-24YRS)"
 									},
 									{
 										"concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
-										"label": "Male sex worker"
+										"label": "Men having sex with men"
 									},
 									{
-										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
-										"label": "Female sex worker"
+										"concept": "bbd42058-b40b-4583-a5ab-3178554a11f2",
+										"label": "Men at high risk"
 									},
 									{
 										"concept": "a890d57a-1350-11df-a1f1-0026b9348838",
-										"label": "People who inject drug (PWID)"
+										"label": "People who inject drugs"
 									},
 									{
-										"concept": "add86571-a28f-4464-9f72-eb6ca72c6ee0",
-										"label": "Trans woman"
+										"concept": "95845475-c298-4e86-9560-736634965427",
+										"label": "Other Women"
 									},
 									{
-										"concept": "1e1af954-4a00-454a-ad55-c5f95c2e30b2",
-										"label": "Trans man"
+										"concept": "45070778-f43e-436f-aa7a-795d3bdb4f6e",
+										"label": "SeroDiscordant couple"
+									},
+									{
+										"concept": "501731a2-f8ca-4bfe-b86b-3bce455e2e52",
+										"label": "Pregnant women"
+									},
+									{
+										"concept": "9b58ed9a-e4a1-4de4-81d9-1b319fd15eca",
+										"label": "Breastfeeding women"
+									},
+									{
+										"concept": "8e31a288-1a91-438b-8c88-768a61ba29ab",
+										"label": "Female sex workers"
+									},
+									{
+										"concept": "0bd518b7-bfb7-4d80-85e9-7a7636369037",
+										"label": "Male sex workers"
 									}
 								],
 								"rendering": "select"
@@ -367,62 +396,10 @@
 							"validators": [
 								{
 									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (popType === '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6')",
-									"message": "Key population is required."
+									"failsWhenExpression": "!isEmpty(hivRapid) && hivRapid === 'a896f3a6-1350-11df-a1f1-0026b9348838' && !isEmpty(myValue)",
+									"message": "Patient HIV test results marked as positive. A positive client should not be enrolled in PrEP."
 								}
-							],
-							"hide": {
-								"hideWhenExpression": "popType !== '93aa3f1d-1c39-4196-b5e6-8adc916cd5d6'"
-							}
-						},
-						{
-							"label": "Priority population specify:",
-							"id": "priorityPopType",
-							"questionOptions": {
-								"concept": "8b0fa615-39c7-40ba-ad06-579ae540c6a5",
-								"answers": [
-									{
-										"concept": "a5e87a67-2f2f-43b5-9acd-0132d796d901",
-										"label": "Fishing community"
-									},
-									{
-										"concept": "5da55301-e28e-4fdf-8b64-02622dedc8b0",
-										"label": "Client of sex worker"
-									},
-									{
-										"concept": "800aa4cc-85ed-4340-9044-a37c036a4446",
-										"label": "AGYW-Adolescent girls and young women(15-24YRS)"
-									},
-									{
-										"concept": "78df2d3b-d640-4f8d-b68f-e18cad18b625",
-										"label": "Displaced persons"
-									},
-									{
-										"concept": "72303ffa-d5b0-4a21-80a9-637ad6ec9538",
-										"label": "Millitary and other uniformed services"
-									},
-									{
-										"concept": "5ebb18d6-8fab-43bc-898f-6428dcc24c1e",
-										"label": "Truck drivers (Mobile population)"
-									},
-									{
-										"concept": "892f296a-efa2-4235-bb85-bf0d62881d25",
-										"label": "Non-injecting drug users"
-									}
-								],
-								"rendering": "select"
-							},
-							"type": "obs",
-							"validators": [
-								{
-									"type": "js_expression",
-									"failsWhenExpression": "isEmpty(myValue) && (popType === '8b0fa615-39c7-40ba-ad06-579ae540c6a5')",
-									"message": "Priority population is required."
-								}
-							],
-							"hide": {
-								"hideWhenExpression": "popType !== '8b0fa615-39c7-40ba-ad06-579ae540c6a5'"
-							}
+							]
 						}
 					]
 				},
@@ -547,16 +524,16 @@
 								"concept": "b42438be-5010-4416-8869-4255f6ee7ae0",
 								"answers": [
 									{
+										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
+										"label": "TDF/FTC"
+									},
+									{
 										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
 										"label": "3TC300mg/TDF300mg"
 									},
 									{
 										"concept": "6fbadffc-3127-11e0-8090-0026b9348838",
 										"label": "TDF"
-									},
-									{
-										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
-										"label": "TDF/FTC"
 									}
 								],
 								"rendering": "multiCheckbox"
@@ -658,60 +635,89 @@
 					"label": "Behaviour risk assessment",
 					"questions": [
 						{
-							"label": "Mark all that apply:",
-							"id": "baselineAss",
+							"type": "obsGroup",
+							"label": "Behaviour Risk Assessment, Detailed",
 							"questionOptions": {
-								"rendering": "multiCheckbox",
-								"concept": "4069aec8-c591-4fc9-8a16-29b90f3f9046",
-								"answers": [
-									{
-										"label": "Sex partner(s) is HIV positive",
-										"concept": "a8aaa054-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "Sex partner(s) at high risk for HIV and HIV status is unknown",
-										"concept": "f725d92e-575e-435e-ba8c-befe95fbd662"
-									},
-									{
-										"label": "Has sex with more than 1 partner",
-										"concept": "c245b312-3527-4bcb-84ec-5a04dc7c3563"
-									},
-									{
-										"label": "Ongoing intimate partner violence",
-										"concept": "a54ea51a-08be-4d89-a7eb-d0b235764a1e"
-									},
-									{
-										"label": "Ongoing gender based violence",
-										"concept": "20e383a3-7eee-4bc1-b6dc-d536676c4fae"
-									},
-									{
-										"label": "Transactional sex",
-										"concept": "7ff5752c-4ccb-45bb-a001-c194316ba35b"
-									},
-									{
-										"label": "Recent STI",
-										"concept": "a8934292-1350-11df-a1f1-0026b9348838"
-									},
-									{
-										"label": "Recurrent use of post-exposure prophylaxis",
-										"concept": "492d008e-de2e-4efc-ace6-04bbd31bee05"
-									},
-									{
-										"label": "Recurrent sex under influence of alcohol/recreational drugs",
-										"concept": "9506b97f-c8bc-48a8-a439-72bb65276785"
-									},
-									{
-										"label": "No condom use",
-										"concept": "c07a5032-a218-4ae8-bcb4-4788b753262e"
-									},
-									{
-										"label": "IDU with shared needles/syringes",
-										"concept": "a890d57a-1350-11df-a1f1-0026b9348838"
-									}
-								]
+								"concept": "faaa5ce4-c888-4d7d-9ee5-137f64f431cf",
+								"rendering": "group"
 							},
-							"type": "obs",
-							"validators": []
+							"questions": [
+								{
+									"label": "Mark all that apply:",
+									"required": "true",
+									"id": "baselineAss",
+									"questionOptions": {
+										"rendering": "multiCheckbox",
+										"concept": "4069aec8-c591-4fc9-8a16-29b90f3f9046",
+										"answers": [
+											{
+												"label": "Sex partner(s) is HIV positive",
+												"concept": "a8aaa054-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Sex partner(s) at high risk for HIV and HIV status is unknown",
+												"concept": "f725d92e-575e-435e-ba8c-befe95fbd662"
+											},
+											{
+												"label": "Has sex with more than 1 partner",
+												"concept": "c245b312-3527-4bcb-84ec-5a04dc7c3563"
+											},
+											{
+												"label": "Ongoing intimate partner violence",
+												"concept": "a54ea51a-08be-4d89-a7eb-d0b235764a1e"
+											},
+											{
+												"label": "Ongoing gender based violence",
+												"concept": "20e383a3-7eee-4bc1-b6dc-d536676c4fae"
+											},
+											{
+												"label": "Transactional sex",
+												"concept": "7ff5752c-4ccb-45bb-a001-c194316ba35b"
+											},
+											{
+												"label": "Recent STI",
+												"concept": "a8934292-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Recurrent use of post-exposure prophylaxis",
+												"concept": "492d008e-de2e-4efc-ace6-04bbd31bee05"
+											},
+											{
+												"label": "Recurrent sex under influence of alcohol/recreational drugs",
+												"concept": "9506b97f-c8bc-48a8-a439-72bb65276785"
+											},
+											{
+												"label": "No condom use",
+												"concept": "c07a5032-a218-4ae8-bcb4-4788b753262e"
+											},
+											{
+												"label": "IDU with shared needles/syringes",
+												"concept": "a890d57a-1350-11df-a1f1-0026b9348838"
+											},
+											{
+												"label": "Other",
+												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838"
+											}
+										]
+									},
+									"type": "obs",
+									"validators": []
+								},
+								{
+									"label": "Other specify:",
+									"id": "otherSpecify",
+									"questionOptions": {
+										"rendering": "text",
+										"concept": "a8a06fc6-1350-11df-a1f1-0026b9348838"
+									},
+									"type": "obs",
+									"validators": [],
+									"hide": {
+										"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaa054-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+									}
+								}
+							],
+							"id": "__IuzMJFFFn"
 						},
 						{
 							"label": "If sex partner(s) is HIV positive, mark all that apply:",
@@ -745,7 +751,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -772,7 +778,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -785,7 +791,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "partnerEnrolled !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(partnerEnrolled) || partnerEnrolled !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -807,7 +813,7 @@
 							},
 							"type": "obs",
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -830,7 +836,7 @@
 								}
 							],
 							"hide": {
-								"hideWhenExpression": "partnerOnArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "isEmpty(partnerOnArt) || partnerOnArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -843,7 +849,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -856,7 +862,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -879,7 +885,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						},
 						{
@@ -894,7 +900,7 @@
 							"type": "obs",
 							"validators": [],
 							"hide": {
-								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
+								"hideWhenExpression": "isEmpty(baselineAss) || arrayContains(['f725d92e-575e-435e-ba8c-befe95fbd662', 'a8aaf3e2-1350-11df-a1f1-0026b9348838','c245b312-3527-4bcb-84ec-5a04dc7c3563', 'a54ea51a-08be-4d89-a7eb-d0b235764a1e', '7ff5752c-4ccb-45bb-a001-c194316ba35b', 'a8934292-1350-11df-a1f1-0026b9348838', '492d008e-de2e-4efc-ace6-04bbd31bee05', '9506b97f-c8bc-48a8-a439-72bb65276785', 'c07a5032-a218-4ae8-bcb4-4788b753262e', 'a890d57a-1350-11df-a1f1-0026b9348838'],baselineAss)"
 							}
 						}
 					]
@@ -1542,13 +1548,19 @@
 						{
 							"label": "GBV/IPV assessment notes:",
 							"type": "obs",
-							"required": "true",
 							"id": "gbvText",
 							"questionOptions": {
 								"concept": "5e4dc798-2cce-4a1a-97e9-bcf22d64b07c",
 								"rendering": "textarea",
 								"rows": 7
-							}
+							},
+							"validators": [
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "isEmpty(myValue) && (physical === 'a899b35c-1350-11df-a1f1-0026b9348838' || emmotional === 'a899b35c-1350-11df-a1f1-0026b9348838' || sexual === 'a899b35c-1350-11df-a1f1-0026b9348838' || financial === 'a899b35c-1350-11df-a1f1-0026b9348838')",
+									"message": "Patient screened positive for GBV/IPV. Please provide notes."
+								}
+							]
 						}
 					]
 				}
@@ -1775,6 +1787,10 @@
 							"validators": [],
 							"hide": {
 								"hideWhenExpression": "creatinineDone !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+							},
+							"alert": {
+								"alertWhenExpression": "!isEmpty(myValue) && creatinineTest <50",
+								"message": "Creatinine is out of range, refer for assessment"
 							}
 						},
 						{
@@ -1914,7 +1930,7 @@
 							"id": "adherenceDone"
 						},
 						{
-							"label": "Signs/sympotoms of acute HIV:",
+							"label": "Signs/symptoms of acute HIV:",
 							"type": "obs",
 							"questionOptions": {
 								"rendering": "select",
@@ -1973,7 +1989,10 @@
 								"rendering": "select"
 							},
 							"type": "obs",
-							"validators": []
+							"validators": [],
+							"hide": {
+								"hideWhenExpression": "medicalEligible !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+							}
 						},
 						{
 							"label": "Prescribed PrEP at initial visit?",
@@ -1995,7 +2014,7 @@
 								]
 							},
 							"hide": {
-								"hideWhenExpression": "medicalEligible !== 'a899b42e-1350-11df-a1f1-0026b9348838' || contraindications !== 'a899b42e-1350-11df-a1f1-0026b9348838' || acuteHiv !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
+								"hideWhenExpression": "contraindications !== 'a899b42e-1350-11df-a1f1-0026b9348838'"
 							}
 						},
 						{
@@ -2006,16 +2025,16 @@
 								"concept": "980b94ab-f64d-4730-b602-c127375014b9",
 								"answers": [
 									{
+										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
+										"label": "TDF/FTC"
+									},
+									{
 										"concept": "a89cc876-1350-11df-a1f1-0026b9348838",
 										"label": "3TC300mg/TDF300mg"
 									},
 									{
 										"concept": "6fbadffc-3127-11e0-8090-0026b9348838",
 										"label": "TDF"
-									},
-									{
-										"concept": "6766ebbc-3298-11e0-8090-0026b9348838",
-										"label": "TDF/FTC"
 									}
 								],
 								"rendering": "multiCheckbox"
@@ -2051,6 +2070,17 @@
 								"rendering": "date",
 								"concept": "90ee880d-4aba-4f43-8b8e-88bfade1dbf0"
 							},
+							"validators": [
+								{
+									"type": "date",
+									"allowFutureDates": "false"
+								},
+								{
+									"type": "js_expression",
+									"failsWhenExpression": "(new moment(encDate)).isBefore((new moment(myValue)), 'day') ",
+									"message": "Initiation date should be before the encounter date."
+								}
+							],
 							"hide": {
 								"hideWhenExpression": "prescribedPrepInitial !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
 							}
@@ -2168,7 +2198,7 @@
 									"type": "obs",
 									"validators": [],
 									"hide": {
-										"hideWhenExpression": "patientReferrals!== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+										"hideWhenExpression": "!arrayContains(['a8aaf3e2-1350-11df-a1f1-0026b9348838'],patientReferrals)"
 									},
 									"id": "otherReferral"
 								}
@@ -2211,11 +2241,13 @@
 								"concept": "a8a666ba-1350-11df-a1f1-0026b9348838",
 								"rendering": "date",
 								"weeksList": [
-									2,
-									4,
-									8,
-									12,
-									16
+									15,
+									30,
+									45,
+									60,
+									90,
+									120,
+									180
 								]
 							},
 							"validators": [
@@ -2240,8 +2272,3 @@
 		}
 	]
 }
-
-
-
-
-

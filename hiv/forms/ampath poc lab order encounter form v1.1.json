@@ -203,6 +203,18 @@
 												"label": "Potassium"
 											},
 											{
+												"concept": "a89a7418-1350-11df-a1f1-0026b9348838",
+												"label": "Potassium"
+											},
+											{
+												"concept": "a899f5ec-1350-11df-a1f1-0026b9348838",
+												"label": "Sodium"
+											},
+											{
+												"concept": "a8af843e-1350-11df-a1f1-0026b9348838",
+												"label": "Serum Uric acid"
+											},
+											{
 												"concept": "a8999dfe-1350-11df-a1f1-0026b9348838",
 												"label": "Rapid HIV "
 											},
@@ -248,6 +260,43 @@
 									"id": "__9pqM4Ivyn"
 								},
 								{
+									"label": "CD4 justification:",
+									"type": "obs",
+									"id": "cd4just",
+									"questionOptions": {
+										"concept": "7300e4a0-5ce3-44bc-8d28-b7f13019524a",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "13e72035-c017-489e-815b-31dd528c084a",
+												"label": "Baseline"
+											},
+											{
+												"concept": "5aee795e-db90-4af7-9d27-79d7275e61de",
+												"label": "New OI"
+											},
+											{
+												"concept": "31962167-5c45-4ce6-b7fb-6dd2bed1b6fd",
+												"label": "Returned clients who were IITs (>= 3months)"
+											},
+											{
+												"concept": "e43ddeb6-3984-499c-a280-3bade1039608",
+												"label": "Confirmation of treatment failure"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a896cce6-1350-11df-a1f1-0026b9348838'))",
+											"message": "Justification required required."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(order1) || !arrayContains(order1, 'a896cce6-1350-11df-a1f1-0026b9348838')"
+									}
+								},
+								{
 									"label": "Viral load justification:",
 									"type": "obs",
 									"id": "vljust",
@@ -256,32 +305,28 @@
 										"rendering": "select",
 										"answers": [
 											{
+												"concept": "d7a8dd98-d5de-4774-823a-a8ab06134d63",
+												"label": "First VL"
+											},
+											{
 												"concept": "5931c4d4-4406-4d71-b75d-2205d905cc24",
-												"label": "Routine VL"
-											},
-											{
-												"concept": "e43ddeb6-3984-499c-a280-3bade1039608",
-												"label": "Confirmation of treatment failure (repeat VL)"
-											},
-											{
-												"concept": "a8981934-1350-11df-a1f1-0026b9348838",
-												"label": "Clinical failure"
+												"label": "Follow up VL"
 											},
 											{
 												"concept": "a8a00158-1350-11df-a1f1-0026b9348838",
 												"label": "Single drug substitution"
 											},
 											{
-												"concept": "3966e139-ca69-47c6-aad3-ebd41bb45e28",
-												"label": "Baseline VL (for infants diagnsed through EID)"
+												"concept": "92a2818f-662c-4dbc-aa20-d9f4edec2654",
+												"label": "Recency"
 											},
 											{
-												"concept": "42cdefa2-c306-4d10-a819-c04131c4934e",
-												"label": "Confirmation of persistent low level viremia (PLLV)"
+												"concept": "635f446c-bab9-428a-9930-ae4f46363c0c",
+												"label": "PMTCT new positives"
 											},
 											{
-												"concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
-												"label": "Other"
+												"concept": "e883376e-80cb-4ec7-a958-f0fbc0a0bad3",
+												"label": "PMTCT known positives"
 											}
 										]
 									},
@@ -289,7 +334,7 @@
 										{
 											"type": "js_expression",
 											"failsWhenExpression": "isEmpty(myValue) && !(isEmpty(order1) || !arrayContains(order1, 'a8982474-1350-11df-a1f1-0026b9348838'))",
-											"message": "Viral load justification required."
+											"message": "Viral load required."
 										}
 									],
 									"hide": {
@@ -297,8 +342,73 @@
 									}
 								},
 								{
-									"label": "PMTCT patient category:",
-									"required": "true",
+									"label": "First VL justification category:",
+									"type": "obs",
+									"id": "firstvlCategory",
+									"questionOptions": {
+										"concept": "f06c293e-5991-4a06-bc3c-723eee2c4237",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "3966e139-ca69-47c6-aad3-ebd41bb45e28",
+												"label": "Baseline VL for infants"
+											},
+											{
+												"concept": "1a5f76c2-e08f-4090-bb8e-9222d86794b0",
+												"label": "VL after ART initiation"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(vljust) && arrayContains(['d7a8dd98-d5de-4774-823a-a8ab06134d63'],vljust)",
+											"message": "Please indicate reason for ordering VL."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(vljust) || !arrayContains(['d7a8dd98-d5de-4774-823a-a8ab06134d63'],vljust)"
+									}
+								},
+								{
+									"label": "Follow up justification category:",
+									"type": "obs",
+									"id": "followupCategory",
+									"questionOptions": {
+										"concept": "d19945a5-4c8e-4a3d-b160-e77dad2a30ad",
+										"rendering": "select",
+										"answers": [
+											{
+												"concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+												"label": "Routine VL"
+											},
+											{
+												"concept": "a89b7c50-1350-11df-a1f1-0026b9348838",
+												"label": "Regimen change"
+											},
+											{
+												"concept": "42cdefa2-c306-4d10-a819-c04131c4934e",
+												"label": "Confirmation of persistent low level viremia (PLLV)"
+											},
+											{
+												"concept": "e43ddeb6-3984-499c-a280-3bade1039608",
+												"label": "Confirmation of treatment failure"
+											}
+										]
+									},
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(vljust) && arrayContains(['5931c4d4-4406-4d71-b75d-2205d905cc24'],vljust)",
+											"message": "Please indicate reason for ordering VL."
+										}
+									],
+									"hide": {
+										"hideWhenExpression": "isEmpty(vljust) || !arrayContains(['5931c4d4-4406-4d71-b75d-2205d905cc24'],vljust)"
+									}
+								},
+								{
+									"label": "PMTCT justification category:",
 									"type": "obs",
 									"id": "patCategory1",
 									"questionOptions": {
@@ -314,14 +424,20 @@
 												"label": "Breastfeeding"
 											},
 											{
-												"concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
-												"label": "None of the above"
+												"concept": "a89ad3a4-1350-11df-a1f1-0026b9348838",
+												"label": "Not applicable"
 											}
 										]
 									},
-									"validators": [],
+									"validators": [
+										{
+											"type": "js_expression",
+											"failsWhenExpression": "isEmpty(myValue) && !isEmpty(vljust) && arrayContains(['635f446c-bab9-428a-9930-ae4f46363c0c','e883376e-80cb-4ec7-a958-f0fbc0a0bad3'],vljust)",
+											"message": "Please indicate reason for ordering VL."
+										}
+									],
 									"hide": {
-										"hideWhenExpression": "(!arrayContains(['781d897a-1359-11df-a1f1-0026b9348838','06eca2a8-1da9-4ac4-95c6-15afedd4de21','0b1b6194-d2d5-4e4b-9f7c-c3b778ccc354','53954785-4d53-4012-8f30-1c37fa870906','53b856ad-21ef-4745-9acd-81aca01bba31'],programUuid)) || (isEmpty(order1) || !arrayContains(order1, 'a8982474-1350-11df-a1f1-0026b9348838'))"
+										"hideWhenExpression": "isEmpty(vljust) || !arrayContains(['635f446c-bab9-428a-9930-ae4f46363c0c','e883376e-80cb-4ec7-a958-f0fbc0a0bad3'],vljust)"
 									}
 								},
 								{
